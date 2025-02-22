@@ -112,7 +112,7 @@
       const email = document.getElementById("email").value;
       const contact = document.getElementById("whatsapp").value;
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzJ0qDz9-WiKlaJyHHmvvjmPUEMqL9Euw0oAw805SJl496Xb5AZRpXvcrritdAld7nx/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxxpFhWX0yUOxMpzEeM8j1VU-BJX174vdO2_dzdsbH_rH0j9aYrbNTMeaOc4tl2eysRaQ/exec", {
           method: "POST",
           body: JSON.stringify({ emailToCheck: email, contact })
         });
