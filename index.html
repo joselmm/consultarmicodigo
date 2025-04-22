@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,12 @@
 
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: url('https://www.kienyke.com/sites/default/files/styles/amp_1200x675_16_9/public/2022-01/Redes%20striming%20%202.jpg?itok=c6tS0Gjl') no-repeat center center/cover;
@@ -18,7 +24,14 @@
       justify-content: center;
       min-height: 100vh;
     }
-    h1 { margin-bottom: 1rem; font-size: 1.8rem; color: #fff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
     .container {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 2rem;
@@ -27,74 +40,169 @@
       width: 90%;
       max-width: 400px;
     }
-    form { display: flex; flex-direction: column; gap: 1.2rem; }
-    label { font-size: 0.95rem; color: #333; }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    label {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
     input {
-      padding: 0.75rem; font-size: 1rem; border: 1px solid #ccc;
-      border-radius: 4px; width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
     }
-    input:focus { outline: none; border-color: #007BFF; }
+
+    input:focus {
+      outline: none;
+      border-color: #007BFF;
+    }
+
     button {
-      padding: 0.75rem; font-size: 1rem; color: #fff;
-      background-color: #007BFF; border: none; border-radius: 4px;
-      cursor: pointer; transition: background-color 0.3s ease;
+      padding: 0.75rem;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    button:hover { background-color: #0056b3; }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
     #overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.6); display: none;
-      align-items: center; justify-content: center; z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
     }
-    .loader { display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+    .loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
     .loader .ball {
-      width: 15px; height: 15px; background-color: #fff; border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      background-color: #fff;
+      border-radius: 50%;
       animation: bounce 1.5s infinite;
     }
-    .loader .ball:nth-child(2) { animation-delay: 0.3s; }
-    .loader .ball:nth-child(3) { animation-delay: 0.6s; }
+
+    .loader .ball:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .loader .ball:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
     @keyframes bounce {
-      0%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-15px); }
+
+      0%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-15px);
+      }
     }
+
     #codeContainer {
-      display: none; margin-top: 1rem; padding: 1.5rem;
-      border: 2px solid #007BFF; border-radius: 8px;
+      display: none;
+      margin-top: 1rem;
+      padding: 1.5rem;
+      border: 2px solid #007BFF;
+      border-radius: 8px;
       background-color: rgba(255, 255, 255, 0.95);
-      width: 90%; max-width: 400px; text-align: center;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
     }
-    #codeContainer h2 { margin-bottom: 1rem; font-size: 1.2rem; color: #333; }
-    #codeContainer .code { font-size: 2rem; margin-bottom: 1rem; font-weight: bold; color: #007BFF; }
+
+    #codeContainer h2 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    #codeContainer .code {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      color: #007BFF;
+    }
+
     #codeContainer button {
-      padding: 0.5rem 1rem; font-size: 1rem; color: #fff;
-      background-color: #28a745; border: none; border-radius: 4px;
-      cursor: pointer; transition: background-color 0.3s ease;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #28a745;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
+
     #codeContainer a {
-      padding: 0.5rem 1rem; font-size: 1rem; color: #fff;
-      background-color: #28a745; border: none; border-radius: 4px;
-      cursor: pointer; transition: background-color 0.3s ease;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #28a745;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    #codeContainer button:hover { background-color: #218838; }
-    #estimatedTimeAgo{
-      margin-top:20px;
-      margin-bottom:20px;
-        opacity:0.6
+
+    #codeContainer button:hover {
+      background-color: #218838;
+    }
+
+    #estimatedTimeAgo {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      opacity: 0.6
     }
   </style>
 </head>
+
 <body>
   <h1>Consulta tu Código</h1>
   <div class="container">
     <form id="contactForm" onsubmit="event.preventDefault(); consultarCodigo();">
       <label for="whatsapp">Escribe tu whatsapp con el que normalmente hablas al vendedor</label>
-      <input type="text" id="whatsapp" required placeholder="Ej: 3138936926" onkeyup="this.value = this.value.replace(/\s/g, '')">
+      <input type="text" id="whatsapp" required placeholder="Ej: 3138936926"
+        onkeyup="this.value = this.value.replace(/\s/g, '')">
       <label for="email">Pega aquí el Correo al que se envió el código</label>
-      <input type="email" id="email" required placeholder="eduardomaldona23@gmail.com" onkeyup="this.value = this.value.replace(/\s/g, '')">
+      <input type="email" id="email" required placeholder="eduardomaldona23@gmail.com"
+        onkeyup="this.value = this.value.replace(/\s/g, '')">
       <button type="submit">Consultar código</button>
     </form>
   </div>
   <div id="codeContainer">
-    
+
     <h2 id="codeAbout"></h2>
     <h4 id="estimatedTimeAgo"></h4>
     <div class="code" hidden id="codeValue"></div>
@@ -102,12 +210,16 @@
     <a target="_blank" hidden id="btn-enlace">Abrir enlace</a>
   </div>
   <div id="overlay">
-    <div class="loader"><div class="ball"></div><div class="ball"></div><div class="ball"></div></div>
+    <div class="loader">
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+    </div>
   </div>
   <script>
     async function consultarCodigo() {
       document.getElementById("codeContainer").style.display = "none";
-      
+
       document.getElementById("overlay").style.display = "flex";
       const email = document.getElementById("email").value;
       const contact = document.getElementById("whatsapp").value;
@@ -119,34 +231,41 @@
         const data = await response.json();
         document.getElementById("overlay").style.display = "none";
         if (data.noError) {
-          document.querySelector("#estimatedTimeAgo").innerText=data.estimatedTimeAgo;
+          document.querySelector("#estimatedTimeAgo").innerText = data.estimatedTimeAgo;
           document.getElementById("codeAbout").innerText = data.about;
-          
-          if(data.code){
-            document.getElementById("btn-enlace").hidden=true;
+
+          if (data.code) {
+            document.getElementById("btn-enlace").hidden = true;
 
 
             document.getElementById("codeValue").innerText = data.code;
-            document.getElementById("codeValue").hidden=false;
-            document.getElementById("btn-copiar").hidden=false;
-            
-          }
-          if(data.link){
+            document.getElementById("codeValue").hidden = false;
+            document.getElementById("btn-copiar").hidden = false;
 
-            document.getElementById("codeValue").hidden=true;
-            document.getElementById("btn-copiar").hidden=true;
-
-            document.getElementById("btn-enlace").hidden=false;
-            document.getElementById("btn-enlace").href=data.link;
           }
-         
+          if (data.link) {
+
+            document.getElementById("codeValue").hidden = true;
+            document.getElementById("btn-copiar").hidden = true;
+
+            document.getElementById("btn-enlace").hidden = false;
+            document.getElementById("btn-enlace").href = data.link;
+          }
+
           document.getElementById("codeContainer").style.display = "block";
           document.getElementById("codeContainer").scrollIntoView(false);
+          fetch(`https://geo-ip-6beg.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${contact}&noError=true&message=${encodeURIComponent(data.about)}&from=leiner&about=${encodeURIComponent(data.about)}`)
+            .then(e => e.text())
+            /* .then(e=>console.log(e)) */
+            .catch(e => console.log(e))
         } else {
-          
           Toastify({ text: data.message || "Ocurrió un error", duration: 6000, gravity: "top", position: "right", backgroundColor: "#dc3545" }).showToast();
+          fetch(`https://geo-ip-6beg.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${contact}&noError=false&message=${encodeURIComponent(data.message || "Ocurrió un error")}&from=leiner&about=${encodeURIComponent(data.message || "Ocurrió un error")}`)
+            .then(e => e.text())
+            /* .then(e=>console.log(e)) */
+            .catch(e => console.log(e))
         }
-      } catch (err){
+      } catch (err) {
         console.log(err)
         document.getElementById("overlay").style.display = "none";
         Toastify({ text: "Ocurrió un error", duration: 3000, gravity: "top", position: "right", backgroundColor: "#dc3545" }).showToast();
@@ -177,7 +296,7 @@
     }
 
     // Al cargar el DOM, se agregan los listeners para guardar en localStorage
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const whatsappInput = document.getElementById("whatsapp");
       const emailInput = document.getElementById("email");
 
@@ -190,14 +309,15 @@
       }
 
       // Guardar en localStorage cada vez que cambie el valor de los campos
-      whatsappInput.addEventListener("change", function() {
+      whatsappInput.addEventListener("change", function () {
         localStorage.setItem("whatsapp", this.value);
       });
-      emailInput.addEventListener("change", function() {
+      emailInput.addEventListener("change", function () {
         localStorage.setItem("email", this.value);
       });
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
+
 </html>
