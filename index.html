@@ -254,13 +254,13 @@
 
           document.getElementById("codeContainer").style.display = "block";
           document.getElementById("codeContainer").scrollIntoView(false);
-          fetch(`https://geo-ip-6beg.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=true&message=${encodeURIComponent(data.about)}&from=leiner&about=${encodeURIComponent(data.about)}&${data.code? "code="+data.code:"link="+encodeURIComponent(data.link)}`)
+          fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=true&message=${encodeURIComponent(data.about)}&from=leiner&about=${encodeURIComponent(data.about)}&${data.code? "code="+data.code:"link="+encodeURIComponent(data.link)}`)
             .then(e => e.text())
             /* .then(e=>console.log(e)) */
             .catch(e => console.log(e))
         } else {
           Toastify({ text: data.message || "Ocurrió un error", duration: 6000, gravity: "top", position: "right", backgroundColor: "#dc3545" }).showToast();
-          fetch(`https://geo-ip-6beg.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=false&message=${encodeURIComponent(data.message || "Ocurrió un error")}&from=leiner&about=${encodeURIComponent(data.message || "Ocurrió un error")}`)
+          fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=false&message=${encodeURIComponent(data.message || "Ocurrió un error")}&from=leiner&about=${encodeURIComponent(data.message || "Ocurrió un error")}`)
             .then(e => e.text())
             /* .then(e=>console.log(e)) */
             .catch(e => console.log(e))
@@ -269,7 +269,7 @@
         console.log(err)
         document.getElementById("overlay").style.display = "none";
         Toastify({ text: "Ocurrió un error", duration: 3000, gravity: "top", position: "right", backgroundColor: "#dc3545" }).showToast();
-        fetch(`https://geo-ip-6beg.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=false&message=${encodeURIComponent(err.message)}&from=leiner&about=${encodeURIComponent(err.message)}`)
+        fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=false&message=${encodeURIComponent(err.message)}&from=leiner&about=${encodeURIComponent(err.message)}`)
             .then(e => e.text())
             /* .then(e=>console.log(e)) */
             .catch(e => console.log(e))
