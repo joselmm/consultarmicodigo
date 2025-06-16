@@ -185,6 +185,30 @@
       margin-bottom: 20px;
       opacity: 0.6
     }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding-right: 2.5rem;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: #999;
+      user-select: none;
+    }
+
+    .clear-btn:hover {
+      color: #dc3545;
+    }
   </style>
 </head>
 
@@ -196,8 +220,13 @@
       <input type="text" id="whatsapp" required placeholder="Ej: 3138936926"
         onkeyup="this.value = this.value.replace(/\s/g, '')">
       <label for="email">Pega aquí el Correo al que se envió el código</label>
-      <input type="email" id="email" required placeholder="eduardomaldona23@gmail.com"
-        onkeyup="this.value = this.value.replace(/\s/g, '')">
+      <!-- Campo de Email con botón X -->
+      <div class="input-wrapper">
+        <input type="email" id="email" required placeholder="eduardomaldona23@gmail.com"
+          onkeyup="this.value = this.value.replace(/\s/g, '')">
+        <span class="clear-btn"
+          onclick="document.getElementById('email').value = ''; document.getElementById('email').focus()">✖</span>
+      </div>
       <button type="submit">Consultar código</button>
     </form>
   </div>
@@ -254,13 +283,13 @@
 
           document.getElementById("codeContainer").style.display = "block";
           document.getElementById("codeContainer").scrollIntoView(false);
-          fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=true&message=${encodeURIComponent(data.about)}&from=leiner&about=${encodeURIComponent(data.about)}&${data.code? "code="+data.code:"link="+encodeURIComponent(data.link)}`)
+          fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}&contact=${data.contact}&noError=true&message=${encodeURIComponent(data.about)}&from=leiner&about=${encodeURIComponent(data.about)}&${data.code ? "code=" + data.code : "link=" + encodeURIComponent(data.link)}`)
             .then(e => e.text())
             /* .then(e=>console.log(e)) */
             .catch(e => console.log(e))
         } else {
           Toastify({ text: data.message || "Ocurrió un error", duration: 6000, gravity: "top", position: "right", backgroundColor: "#dc3545" }).showToast();
-          fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=false&message=${encodeURIComponent(data.message || "Ocurrió un error")}&from=leiner&about=${encodeURIComponent(data.message || "Ocurrió un error")}`)
+          fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}&contact=${data.contact}&noError=false&message=${encodeURIComponent(data.message || "Ocurrió un error")}&from=leiner&about=${encodeURIComponent(data.message || "Ocurrió un error")}`)
             .then(e => e.text())
             /* .then(e=>console.log(e)) */
             .catch(e => console.log(e))
@@ -269,10 +298,10 @@
         console.log(err)
         document.getElementById("overlay").style.display = "none";
         Toastify({ text: "Ocurrió un error", duration: 3000, gravity: "top", position: "right", backgroundColor: "#dc3545" }).showToast();
-        fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}.com&contact=${data.contact}&noError=false&message=${encodeURIComponent(err.message)}&from=leiner&about=${encodeURIComponent(err.message)}`)
-            .then(e => e.text())
-            /* .then(e=>console.log(e)) */
-            .catch(e => console.log(e))
+        fetch(`https://geo-ip-5s2g.onrender.com?ts=${new Date().getTime()}&email=${encodeURIComponent(email)}&contact=${data.contact}&noError=false&message=${encodeURIComponent(err.message)}&from=leiner&about=${encodeURIComponent(err.message)}`)
+          .then(e => e.text())
+          /* .then(e=>console.log(e)) */
+          .catch(e => console.log(e))
       }
     }
 
